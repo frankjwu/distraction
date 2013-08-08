@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'distraction'
+
+args = ARGV.join(" ") # get arguments
+abort(Distraction::VERSION) if args == "--version" || args == "-v"
+
+case args
+when "til"
+	Distraction.reddit_TIL(false)
+when "til open"
+	Distraction.reddit_TIL(true)
+else
+	puts "Not sure what to do!"
+end

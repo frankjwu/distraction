@@ -1,15 +1,22 @@
 #!/usr/bin/env ruby
 
 require 'distraction'
+require 'rubygems'
 
-args = ARGV.join(" ") # get arguments
-abort(Distraction::VERSION) if args == "--version" || args == "-v"
+begin
+	# get arguments
+	args = ARGV.join(" ")
+	abort(Gem::Specification::load("distraction.gemspec").version.to_s) if args == "--version" || args == "-v"
 
-case args
-when "til"
-	Distraction.reddit_TIL(false)
-when "til open"
-	Distraction.reddit_TIL(true)
-else
-	puts "Not sure what to do!"
+	case args
+	when "til"
+		Distraction.reddit_TIL(false)
+	when "til open"
+		Distraction.reddit_TIL(true)
+	else
+		puts "Not sure what to do!"
+	end
+
+rescue Interrupt => e # handle CTRL + C cleanly
+	puts ""
 end

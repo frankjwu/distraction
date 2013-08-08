@@ -14,7 +14,9 @@ begin
 	when "til open"
 		Distraction.reddit_TIL(true)
 	else
-		puts "Not sure what to do!"
+		puts %Q(I can't do that! But I can do the following:
+  distraction til          Displays an interesting fact
+  distraction til open     Displays a fact and opens up a URL with more information)
 	end
 
 rescue Interrupt => e # handle CTRL + C cleanly

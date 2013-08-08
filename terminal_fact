@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+begin Gem::Specification::find_by_name('snoo')
+	require 'snoo'
+rescue Gem::LoadError
+	puts "You'll need to run 'gem install snoo' to see an interesting fact!"
+	exit
+end
+
+reddit = Snoo::Client.new
+begin
+	listing = reddit.get_listing(:subreddit => "todayilearned", :limit => 1)['data']['children']
+	result = listing[0]['data']
+	result_title = result['title'].gsub('TIL', 'Did you know...')
+	result_url = result['url']
+
+	puts result_title + "\n"
+	if (ARGV[0] == "open")
+		`open #{result_url}`
+	else
+		puts "Hint: type 'terminal_fact open' to open this link\n"
+	end
+rescue
+	puts "Reddit isn't responding right now. Let's try again later."
+end

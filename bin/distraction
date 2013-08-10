@@ -9,14 +9,26 @@ begin
 	abort(Gem::Specification::load("distraction.gemspec").version.to_s) if args == "--version" || args == "-v"
 
 	case args
-	when "til"
-		Distraction.reddit_TIL(false)
-	when "til open"
-		Distraction.reddit_TIL(true)
+	when /^reddit/
+		args = args.split(" ")
+		if args[1]
+			Distraction.reddit_top(args[1])
+		else
+			Distraction.reddit_top("all")
+		end
+	when "fact"
+		Distraction.reddit_fact(false)
+	when "fact open"
+		Distraction.reddit_fact(true)
+	when "hn"
+		Distraction.hn()
 	else
-		puts %Q(I can't do that! But I can do the following:
-  distraction til          Displays an interesting fact
-  distraction til open     Displays a fact and opens up a URL with more information)
+		puts "I can't do that! But I can do the following:\n"\
+			"  distraction reddit                  Displays the top ten posts on the Reddit homepage"
+			"  distraction reddit [subreddit]      Displays the top ten posts in [subreddit]\n"\
+			"  distraction fact                    Displays an interesting fact\n"\
+			"  distraction fact open               Displays a fact and opens up a URL with more information\n"\
+			"  distraction hn                      Displays the top ten posts on Hacker News)"\
 	end
 
 rescue Interrupt => e # handle CTRL + C cleanly

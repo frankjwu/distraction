@@ -23,7 +23,7 @@ class Distraction
 				sleep(10)
 				`open #{result_url}`
 			when false
-				puts result_title + "\n\nYou can type 'distraction til open' to open the link in a browser."
+				puts result_title + "\n\nYou can type 'distraction fact open' to open the link in a browser."
 			end
 
 		rescue
@@ -60,7 +60,30 @@ class Distraction
 				puts "Come on, son."
 			end
 		rescue
-			puts "Reddit isn't responding right now. Let's try again later."
+			puts "Oops, either Reddit isn't responding or that subreddit doesn't exist!"
+		end
+	end
+
+	# picks a random video off r/videos
+	def self.reddit_vid()
+		begin
+			ping = Net::HTTP.get(URI('http://www.reddit.com/r/videos.json')) # gets 25 top vids
+			listing = JSON.parse(ping)
+			listing = listing['data']['children']
+			nsfw_flag = true # true means it is nsfw
+			randomVideo = 0
+			while nsfw_flag
+				randomVideo = rand(24) # random between 0 and 24
+				nsfw_flag = listing[randomVideo]['data']['over_18']
+			end
+			result = listing[randomVideo]['data']
+			result_domain = result['domain']
+			result_url = result['url']
+			puts "Opening video from (#{result_domain}) in 5 seconds... CTRL + C to quit."
+			sleep(5)
+			`open #{result_url}`
+		rescue
+			puts "Oops, something went wrong! Let's try again later."
 		end
 	end
 

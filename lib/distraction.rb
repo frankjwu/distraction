@@ -106,7 +106,7 @@ class Distraction
 			if ((story < 11) && (story > 0))
 				result_url = listing[story]['url']
 				if result_url.start_with?("/comments/")
-					result_url = "http://news.ycombinator.com/item?id=" + listing[story]['id']
+					result_url = "http://news.ycombinator.com/item?id=#{listing[story]['id']}"
 				end
 				puts "\nOpening link (#{result_url}) in 5 seconds... CTRL + C to quit."
 				sleep(5)
@@ -115,7 +115,7 @@ class Distraction
 				puts "Come on, son."
 			end
 		rescue
-			puts "HN isn't responding right now. Let's try again later."
+			puts "The HN API we're using isn't responding right now. Let's try again later."
 		end
 	end
 end

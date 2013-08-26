@@ -25,13 +25,13 @@ begin
 	when "hn"
 		Distraction.hn()
 	else
-		puts "I can't do that! But I can do the following:\n"\
+		puts "I can't do that! But I can do the following:\n\n"\
 			"  distraction reddit                  Displays the top ten posts on the Reddit homepage\n"\
 			"  distraction reddit [subreddit]      Displays the top ten posts in [subreddit]\n"\
 			"  distraction fact                    Displays an interesting fact\n"\
 			"  distraction fact open               Displays a fact and opens up a URL with more information\n"\
 			"  distraction vid                     Displays a random video\n"\
-			"  distraction hn                      Displays the top ten posts on Hacker News)"\
+			"  distraction hn                      Displays the top ten posts on Hacker News"\
 	end
 
 rescue Interrupt => e # handle CTRL + C cleanly

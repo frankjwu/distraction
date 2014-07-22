@@ -5,6 +5,8 @@ Distraction is a way to temporarily distract yourself in your terminal. It's for
 
 It uses Reddit's official API and [this unofficial Hacker News API](http://api.ihackernews.com/).
 
+Distraction is released freely under the [MIT License](http://bih.mit-license.org/).
+
 ## Install
 
 	$ gem install distraction

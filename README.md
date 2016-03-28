@@ -9,23 +9,23 @@ Distraction is released freely under the [MIT License](http://bih.mit-license.or
 
 ## Install
 
-	$ gem install distraction
+  $ gem install distraction
 
 ## Usage
-	$ distraction reddit
-	Displays the top ten posts on the Reddit homepage
+  $ distraction reddit
+  Displays the top ten posts on the Reddit homepage
 
-	$ distraction reddit [subreddit]
-	Displays the top ten posts in [subreddit]
-	
-	$ distraction fact
-	Displays an interesting fact
-	
-	$ distraction fact open
-	Displays a fact and opens up a URL with more information
-	
-	$ distraction vid
-	Displays a random video
-	
-	$ distraction hn
-	Displays the top ten posts on Hacker News
+  $ distraction reddit [subreddit]
+  Displays the top ten posts in [subreddit]
+  
+  $ distraction fact
+  Displays an interesting fact
+  
+  $ distraction fact open
+  Displays a fact and opens up a URL with more information
+  
+  $ distraction vid
+  Displays a random video
+  
+  $ distraction hn
+  Displays the top ten posts on Hacker News
